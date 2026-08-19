@@ -45,7 +45,13 @@ def available() -> bool:
     """True if earthengine-api imports AND we can initialize (stored creds)."""
     try:
         return initialize()
-    except Exception:
+    except Exception as e:
+        # Don't swallow this silently — print it so it shows up in the platform's
+        # log viewer (e.g. Render "Logs" tab). Without this, auth failures are
+        # invisible: /api/live/status just says False with no way to tell why.
+        import traceback
+        print(f"[ee_engine] Earth Engine initialize() failed: {e!r}")
+        traceback.print_exc()
         return False
 
 
