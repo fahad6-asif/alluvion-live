@@ -1,0 +1,12 @@
+# Alluvion Live backend — pure-Python, no GDAL / no geospatial system libraries.
+# This is why it deploys cleanly on Render's free tier with zero setup.
+fastapi>=0.110,<1
+uvicorn[standard]>=0.27,<1
+pydantic>=2,<3
+numpy>=1.24
+
+# Live Google Earth Engine (real satellite burn detection + storm replay).
+earthengine-api>=1.0
+
+# Optional AI advisory generator (falls back to a template if no GEMINI_API_KEY).
+google-generativeai>=0.5

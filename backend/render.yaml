@@ -1,0 +1,18 @@
+# Optional Render "blueprint". You can either import this file in Render, or just
+# fill the same values into the Render dashboard by hand (DEPLOY.md walks through it).
+services:
+  - type: web
+    name: alluvion-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      # Paste the FULL contents of your Earth Engine service-account key JSON here
+      # in the Render dashboard (mark it secret). Required for live mode.
+      - key: EE_SERVICE_ACCOUNT_JSON
+        sync: false
+      # Optional: only if you want AI-written advisories instead of the template.
+      - key: GEMINI_API_KEY
+        sync: false

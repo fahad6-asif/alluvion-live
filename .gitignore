@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# build output
+dist/
+build/
+
+# env / secrets — NEVER commit your Earth Engine key or API keys
+.env
+.env.*
+*.json.key
+service-account*.json
+ee-*.json
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
